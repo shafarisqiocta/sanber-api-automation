@@ -1,5 +1,6 @@
 import request from "supertest";
 import { expect } from "chai";
+import { getBooking } from "../function/getBooking.spec.js";
 
 const baseUrl = "https://restful-booker.herokuapp.com";
 const paramFirstName = "sally";
@@ -25,7 +26,7 @@ describe("Get All Booking", function() {
 
         // Assertion menggunakan chai
         expect(response.status).to.equal(200);
-        console.log((await response).body);
+        // console.log((await response).body);
     });
     it("Positive - Success bookingId", async function() {
         const response = await request(baseUrl) // base url
@@ -33,6 +34,16 @@ describe("Get All Booking", function() {
 
         // Assertion menggunakan chai
         expect(response.status).to.equal(200);
-        console.log((await response).body);
+        // console.log((await response).body);
     });
 });
+describe("Get booking scenario by function", () =>{
+    it("sukses get all booking by function", async () => {
+        const response = await getBooking.all();
+        console.log((await response).status);
+
+        expect(response.status).to.equal(200);
+        console.log((await response).body);
+
+    })
+})
